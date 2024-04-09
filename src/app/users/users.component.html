@@ -1,0 +1,52 @@
+<h2 class="text-center mb-4">Username Module</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">        
+        <fieldset class="fieldset">
+          <legend class="legend">Login Info</legend>
+          <div class="form-group">
+            <label for="Username">Username</label>
+            <input type="text" class="form-control" [(ngModel)]="Username" placeholder="Enter your name">
+          </div>
+          
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="Password" placeholder="Enter your Password">
+          </div>
+  
+          <button class="btn btn-primary" (click)="login()">Login</button>
+          &nbsp;
+          <button class="btn btn-danger" (click)="reset_bt()">Reset Button</button>
+          &nbsp;
+          <button class="btn btn-success" *ngIf="loggedIn" (click) ="addUser()">Add Users</button>
+          &nbsp;
+
+        </fieldset>
+      </div>
+      <div class="col-md-7">
+        <div class="container mt-4" *ngIf="Users.length > 0">
+          <h3>User List</h3>
+          <ul class="list-group" style="width: 900px;">
+            <li class="list-group-item" *ngFor="let user of Users; let i = index">
+              <div class="row" >
+                <div class="col-md-3">
+                  <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" class="pull-left" alt="Profile Img" width="50px">
+                    <div class="text-center">
+                      {{ user.Username }} 
+                    </div>
+                </div>
+                <div class="pull-right">
+                  <button class="btn btn-info" (click)="userDetails(i)">Details</button> 
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button> 
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
